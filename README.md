@@ -8,7 +8,7 @@ The Pantry is a release warehouse, not a source repository. Do not commit `.hpkg
 
 Use one published release for each product version:
 
-1. Tag the release as `<id>-v<version>`, for example `ichi-v1.2`.
+1. Tag the release as `v<version>-<id>`, for example `v1.0-getback`.
 2. Attach the Haiku package using `<package>-<version>-<revision>-<architecture>.hpkg`.
 3. Optionally attach `<asset>.sha256` beside it.
 4. Publish a new release for every update. Do not replace an asset on an existing release.
@@ -16,9 +16,9 @@ Use one published release for each product version:
 Example:
 
 ```text
-Release tag: ichi-v1.2
-ichi-1.2-1-x86_64.hpkg
-ichi-1.2-1-x86_64.hpkg.sha256
+Release tag: v1.0-getback
+getback-1.0.0-1-x86_64.hpkg
+getback-1.0.0-1-x86_64.hpkg.sha256
 ```
 
 The package's internal name, version and architecture must agree with its filename and Cookbook recipe. Umami verifies the downloaded package metadata with Haiku's `package list -i` before installation.
@@ -31,16 +31,15 @@ Metadata belongs in [umami-cookbook](https://github.com/sikosis/umami-cookbook).
 {
   "version": 1,
   "app": {
-    "id": "ichi",
-    "name": "Ichi",
-    "description": "Example closed-source Haiku application.",
+    "id": "getback",
+    "name": "GetBack",
+    "description": "GetBack for Haiku.",
     "provider": "github",
     "repo": "sikosis/umami-pantry",
-    "release_tag_pattern": "^ichi-v",
-    "asset_pattern": "^ichi-.*-{arch}\\.hpkg$",
-    "package_name": "ichi",
-    "channel": "stable",
-    "checksum_asset": "{asset}.sha256"
+    "release_tag_pattern": "^v[0-9].*-getback$",
+    "asset_pattern": "^getback-.*-{arch}\\.hpkg$",
+    "package_name": "getback",
+    "channel": "stable"
   }
 }
 ```
